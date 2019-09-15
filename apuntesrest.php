@@ -21,3 +21,15 @@ Peticion REST se basa en una URL y un verbo HTTP
 EJEMPLO GET /books/1 DELETE /books/50
 
 CLASE 5
+Utilizacion de curl desde consola, consumo de un GET de ejemplo de una pag 
+
+CLASE 6
+Exponer Datos a traves de HTTP GET
+Creamos un pequeño servicio REST 
+server_platzi.php fue el servicio creado 
+
+- Desde consola levantamos el servidor php -S localhost:8080 server_platzi.php
+- Desde otra consola empezamos a utilizar CURL 
+Realizar la consulta:
+$ curl http://localhost:8000 -v
+$ curl http://localhost:8000?resource_type=books
