@@ -13,9 +13,9 @@ $resourceType = $_GET['resource_type'];
 
 //Si no pertenece resourcetype  a alguno elemento del array allowedResourceTypes
 //Vlidamos que el recurso exista
-/*if (!in_array($resourceType,$allowedResourceTypes)) {
+if (!in_array($resourceType,$allowedResourceTypes)) {
     die;
-}*/
+}
 
 //Definimos los recursos
 $books = [
@@ -40,16 +40,26 @@ $error = array('Message' => 'Defina el recuso', );
 
 header('Content-Type: application/json');
 
+//Levantamos el id del recuso buscado
+$resourceId = array_key_exists('resource_id',$_GET) ? $_GET['resource_id'] : '';
 
 //Se etablecen los metodos de consumo
 //Generamos la respuesta, solo si el pedido es correcto
 switch (strtoupper($_SERVER['REQUEST_METHOD'])) {
     case 'GET':
-    if (in_array($resourceType,$allowedResourceTypes)) {
-        echo json_encode($books);
+    if (empty($resourceId)) {
+        if (in_array($resourceType,$allowedResourceTypes)) {
+            echo json_encode($books);
+        }else{
+            echo json_encode($error);
+        } 
+        //echo json_encode($books);
     }else{
-        echo json_encode($error);
+        if(array_key_exists($resourceId,$books)){
+            echo json_encode($books [$resourceId]);
+        }
     }
+    
         break;
     case 'POST':
 

@@ -33,3 +33,13 @@ server_platzi.php fue el servicio creado
 Realizar la consulta:
 $ curl http://localhost:8000 -v
 $ curl http://localhost:8000?resource_type=books
+
+CLASE 6 Exponer un recurso en particular
+Se definio como consumir un recurso en especifico
+Atravez del GET traido de la peticion se establecio logica para que solo imprimiera el id del recusos solicitado
+curl "http://localhost:8080?resource_type=books&resource_id=1"
+
+Se dejo a un lado el metodo como se accedia a la URI con el fin de utilizar como lo define REST
+en lugar de curl "http://localhost:8080?resource_type=books&resource_id=1"
+Acceder a 
+curl "http://localhost:8080/books/1"
